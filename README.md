@@ -16,5 +16,6 @@ Links that helped:
 * [GraphQL site](https://graphql.org/) - basics of GraphQL and its query language
 * [express-graphql](https://github.com/graphql/express-graphql) - GraphQL adapter for Express
 * [Using GraphQL with MongoDB](https://www.compose.com/articles/using-graphql-with-mongodb/) - example of promises with GraphQL
+* [Building a GraphQL server with Node.js and SQL](https://www.reindex.io/blog/building-a-graphql-server-with-node-js-and-sql/)
 
 License details at [LICENSE.md](https://github.com/akeaswaran/blob/master/LICENSE.md)
