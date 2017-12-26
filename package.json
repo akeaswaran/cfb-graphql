@@ -1,0 +1,38 @@
+{
+  "name": "cfb-history",
+  "version": "0.0.1",
+  "description": "Documenting and recording ESPN's college football game history.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "supervise": "supervisor ./bin/www",
+    "setup-db": "node db/setup-db.js",
+    "refresh-db": "node db/refresh-db.js"
+  },
+  "keywords": [
+    "cfb",
+    "college",
+    "football",
+    "history",
+    "football",
+    "college",
+    "sports",
+    "sports",
+    "history",
+    "football",
+    "history"
+  ],
+  "author": "Akshay Easwaran <akeaswaran@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.12.3",
+    "graphql-scalars": "^0.1.4",
+    "moment": "^2.20.1",
+    "npm-run-all": "^4.1.2",
+    "pg": "^7.4.0",
+    "pg-promise": "^7.3.2"
+  }
+}
