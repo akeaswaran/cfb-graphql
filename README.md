@@ -18,4 +18,4 @@ Links that helped:
 * [Using GraphQL with MongoDB](https://www.compose.com/articles/using-graphql-with-mongodb/) - example of promises with GraphQL
 * [Building a GraphQL server with Node.js and SQL](https://www.reindex.io/blog/building-a-graphql-server-with-node-js-and-sql/)
 
-License details at [LICENSE.md](https://github.com/akeaswaran/blob/master/LICENSE.md)
+License details at [LICENSE.md](https://github.com/akeaswaran/cfb-graphql/blob/master/LICENSE.md)

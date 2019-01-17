@@ -353,7 +353,7 @@ function createESPNTeam(competitorDict) {
 }
 
 function updateDBData(date) {
-    console.log('Starting update at ', moment().format('MMMM Do YYYY, h:mm:ss a'));
+    console.log('Starting update at', moment().format('MMMM Do YYYY, h:mm:ss a'));
     var start = new Date();
     var dateString = moment(date).format('YYYYMMDD');
     var url = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?calendartype=blacklist&dates=' + dateString;
@@ -377,7 +377,7 @@ function updateDBData(date) {
           .then(() => {
               var end = new Date();
               var diff = (end - start);
-              console.log('Update completed in ' + diff + ' ms');
+              console.log('Update completed successfully in ' + diff + ' ms.');
           })
           .catch(error => {
               if (error) {
@@ -392,7 +392,8 @@ function updateDBData(date) {
         .then(() => {
             var end = new Date();
             var diff = (end - start);
-            console.log('Update completed in ' + diff + ' ms');
+            console.log('Update completed with error in ' + diff + ' ms. Error below.');
+            console.log(error);
         })
         .catch(error => {
             if (error) {
@@ -406,17 +407,19 @@ function checkForUpdatedData(date) {
     var update = {};
     db.any('SELECT * FROM cfb_espn.updates ORDER BY created_at DESC LIMIT 1;')
     .then(res => {
-        update = res.rows[0];
-        var updateQ = (moment(date) > moment(update.created_at).add(1, 'days')) ? 'Yes' : 'No';
-        console.log('Last update: \n' + JSON.stringify(update) + '\n\nShould update? ' + updateQ);
-        // { retrieved_date: '20171225', status: 'success', created_at: '2017-12-25T0:00:00Z' }
+        if (res.rows > 0) {
+            update = res.rows[0];
+            var updateQ = (moment(date) > moment(update.created_at).add(1, 'days')) ? 'Yes' : 'No';
+            console.log('Last update: \n' + JSON.stringify(update) + '\n\nShould update? ' + updateQ);
+            // { retrieved_date: '20171225', status: 'success', created_at: '2017-12-25T0:00:00Z' }
 
-        if (update == null || moment(date) > moment(update.created_at).add(1, 'days')) {
-            // reload with new data
-            console.log('Needs data update...');
-            updateDBData(date);
-        } else {
-            console.log('Last updated at ', moment(update.created_at).format('MMMM Do YYYY, h:mm:ss a'));
+            if (update == null || moment(date) > moment(update.created_at).add(1, 'days')) {
+                // reload with new data
+                console.log('Needs data update...');
+                updateDBData(date);
+            } else {
+                console.log('Last updated at ', moment(update.created_at).format('MMMM Do YYYY, h:mm:ss a'));
+            }
         }
     })
     .catch(error => {
@@ -429,4 +432,4 @@ function checkForUpdatedData(date) {
 
 //checkForUpdatedData(new Date());
 // console.log(moment(new Date(2017, 8, 4)).format('MMM DD, YYYY'));
-updateDBData(new Date(2017, 8, 4));
+updateDBData(new Date(2018, 9, 1));
